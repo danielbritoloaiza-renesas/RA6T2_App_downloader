@@ -123,7 +123,7 @@
     <node id="board.clock.pll2.display" option="board.clock.pll2.display.value"/>
     <node id="board.clock.clock.source" option="board.clock.clock.source.pll"/>
     <node id="board.clock.clkout.source" option="board.clock.clkout.source.disabled"/>
-    <node id="board.clock.scispiclk.source" option="board.clock.scispiclk.source.disabled"/>
+    <node id="board.clock.scispiclk.source" option="board.clock.scispiclk.source.hoco"/>
     <node id="board.clock.canfdclk.source" option="board.clock.canfdclk.source.disabled"/>
     <node id="board.clock.gptclk.source" option="board.clock.gptclk.source.disabled"/>
     <node id="board.clock.iicclk.source" option="board.clock.iicclk.source.disabled"/>

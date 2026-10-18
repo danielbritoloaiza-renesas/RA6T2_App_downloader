@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY\u201D/delimiter=;
-environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY\u201D/operation=append
-environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY\u201D/value=${workspace_loc\:MCU4_RA_Bootloader}/ra/mcu-tools/MCUboot/root-ec-p256.pem
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY\u201D/operation=replace
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY\u201D/value=${workspace_loc\:RA6T2_Bootloader}/ra/mcu-tools/MCUboot/root-ec-p256.pem
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_VERSION\u201D/delimiter=;
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_VERSION\u201D/operation=replace
 environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_VERSION\u201D/value=1.0.0

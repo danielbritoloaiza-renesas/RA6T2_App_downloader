@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<raConfiguration version="3">
+<raConfiguration version="12">
   <generalSettings>
-    <option key="#pinconfiguration#" value="R7FA6T2BD3CFP.pincfg"/>
     <option key="#Board#" value="board.ra6t2mck"/>
     <option key="CPU" value="RA6T2"/>
     <option key="Core" value="CM33"/>
@@ -9,6 +8,7 @@
     <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
     <option key="#DeviceCommand#" value="R7FA6T2BD"/>
     <option key="#RTOS#" value="rtos.awsfreertos"/>
+    <option key="#pinconfiguration#" value="R7FA6T2BD3CFP.pincfg"/>
     <option key="#FSPVersion#" value="5.9.0"/>
     <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##ra6t2_mck##"/>
     <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
@@ -70,8 +70,8 @@
       <property id="config.bsp.fsp.OFS1.PGA1_pseudo_differential_input" value="config.bsp.fsp.OFS1.PGA1_pseudo_differential_input.disabled"/>
       <property id="config.bsp.fsp.OFS1.PGA2_pseudo_differential_input" value="config.bsp.fsp.OFS1.PGA2_pseudo_differential_input.disabled"/>
       <property id="config.bsp.fsp.OFS1.PGA3_pseudo_differential_input" value="config.bsp.fsp.OFS1.PGA3_pseudo_differential_input.disabled"/>
-      <property id="config.bsp.fsp.BPS.BPS0" value="0U"/>
-      <property id="config.bsp.fsp.PBPS.PBPS0" value="0U"/>
+      <property id="config.bsp.fsp.BPS.BPS0" value=""/>
+      <property id="config.bsp.fsp.PBPS.PBPS0" value=""/>
       <property id="config.bsp.fsp.tfu_mathlib" value="config.bsp.fsp.tfu_mathlib.enabled"/>
       <property id="config.bsp.common.main_osc_wait" value="config.bsp.common.main_osc_wait.wait_8163"/>
       <property id="config.bsp.fsp.mcu.adc.max_freq_hz" value="50000000"/>
@@ -198,11 +198,17 @@
       <originalPack>Renesas.RA_board_ra6t2_mck.5.9.0.pack</originalPack>
     </component>
   </raComponentSelection>
+  <raElcConfiguration/>
   <raIcuConfiguration/>
-  <raMessagingConfiguration/>
+  <raLinkMapConfiguration/>
   <raModuleConfiguration>
     <module id="module.driver.ioport_on_ioport.0">
       <property id="module.driver.ioport.name" value="g_ioport"/>
+      <property id="module.driver.ioport.elc_trigger_ioport1" value="_disabled"/>
+      <property id="module.driver.ioport.elc_trigger_ioport2" value="_disabled"/>
+      <property id="module.driver.ioport.elc_trigger_ioport3" value="_disabled"/>
+      <property id="module.driver.ioport.elc_trigger_ioport4" value="_disabled"/>
+      <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
     </module>
     <module id="module.middleware.rm_freertos_port.0"/>
     <context id="_hal.0">
@@ -214,224 +220,223 @@
       <property id="rtos.awsfreertos.thread.name" value="Blinky Thread"/>
       <property id="rtos.awsfreertos.thread.stack" value="512"/>
       <property id="rtos.awsfreertos.thread.priority" value="1"/>
+      <property id="rtos.awsfreertos.thread.context" value="NULL"/>
+      <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
+      <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
     </context>
+    <context id="rtos.awsfreertos.thread.758352465">
+      <property id="_symbol" value="downloader_thread"/>
+      <property id="rtos.awsfreertos.thread.name" value="DownThread"/>
+      <property id="rtos.awsfreertos.thread.stack" value="0x4000"/>
+      <property id="rtos.awsfreertos.thread.priority" value="3"/>
+      <property id="rtos.awsfreertos.thread.context" value="NULL"/>
+      <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
+      <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
+    </context>
+    <config id="config.driver.ioport">
+      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+    </config>
     <config id="config.awsfreertos.thread">
+      <property id="config.awsfreertos.custom_freertosconfig" value=""/>
+      <property id="config.awsfreertos.thread.configuse_preemption" value="config.awsfreertos.thread.configuse_preemption.enabled"/>
+      <property id="config.awsfreertos.thread.configuse_port_optimised_task_selection" value="config.awsfreertos.thread.configuse_port_optimised_task_selection.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_tickless_idle" value="config.awsfreertos.thread.configuse_tickless_idle.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_idle_hook" value="config.awsfreertos.thread.configuse_idle_hook.enabled"/>
+      <property id="config.awsfreertos.thread.configuse_malloc_failed_hook" value="config.awsfreertos.thread.configuse_malloc_failed_hook.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_daemon_task_startup_hook" value="config.awsfreertos.thread.configuse_daemon_task_startup_hook.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_tick_hook" value="config.awsfreertos.thread.configuse_tick_hook.disabled"/>
+      <property id="config.awsfreertos.thread.configcpu_clock_hz" value="SystemCoreClock"/>
+      <property id="config.awsfreertos.thread.configtick_rate_hz" value="1000"/>
+      <property id="config.awsfreertos.thread.configmax_priorities" value="5"/>
+      <property id="config.awsfreertos.thread.configminimal_stack_size" value="128"/>
+      <property id="config.awsfreertos.thread.configmax_task_name_len" value="16"/>
+      <property id="config.awsfreertos.thread.configuse_trace_facility" value="config.awsfreertos.thread.configuse_trace_facility.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_stats_formatting_functions" value="config.awsfreertos.thread.configuse_stats_formatting_functions.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_16_bit_ticks" value="config.awsfreertos.thread.configuse_16_bit_ticks.disabled"/>
+      <property id="config.awsfreertos.thread.configidle_should_yield" value="config.awsfreertos.thread.configidle_should_yield.enabled"/>
+      <property id="config.awsfreertos.thread.configuse_task_notifications" value="config.awsfreertos.thread.configuse_task_notifications.enabled"/>
+      <property id="config.awsfreertos.thread.configtask_notifications_array_enteries" value="1"/>
+      <property id="config.awsfreertos.thread.configuse_mutexes" value="config.awsfreertos.thread.configuse_mutexes.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_recursive_mutexes" value="config.awsfreertos.thread.configuse_recursive_mutexes.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_counting_semaphores" value="config.awsfreertos.thread.configuse_counting_semaphores.enabled"/>
+      <property id="config.awsfreertos.thread.configcheck_for_stack_overflow" value="config.awsfreertos.thread.configcheck_for_stack_overflow.disabled"/>
+      <property id="config.awsfreertos.thread.configqueue_registry_size" value="10"/>
+      <property id="config.awsfreertos.thread.configuse_queue_sets" value="config.awsfreertos.thread.configuse_queue_sets.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_time_slicing" value="config.awsfreertos.thread.configuse_time_slicing.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_newlib_reentrant" value="config.awsfreertos.thread.configuse_newlib_reentrant.disabled"/>
+      <property id="config.awsfreertos.thread.configenable_backward_compatibility" value="config.awsfreertos.thread.configenable_backward_compatibility.disabled"/>
+      <property id="config.awsfreertos.thread.confignum_thread_local_storage_pointers" value="5"/>
+      <property id="config.awsfreertos.thread.configstack_depth_type" value="uint32_t"/>
+      <property id="config.awsfreertos.thread.configmessage_buffer_length_type" value="size_t"/>
+      <property id="config.awsfreertos.thread.configheap_clear_memory_on_free" value="config.awsfreertos.thread.configheap_clear_memory_on_free.disabled"/>
       <property id="config.awsfreertos.thread.configsupport_static_allocation" value="config.awsfreertos.thread.configsupport_static_allocation.enabled"/>
       <property id="config.awsfreertos.thread.configsupport_dynamic_allocation" value="config.awsfreertos.thread.configsupport_dynamic_allocation.disabled"/>
+      <property id="config.awsfreertos.thread.configtotal_heap_size" value="1024"/>
+      <property id="config.awsfreertos.thread.configapplication_allocated_heap" value="config.awsfreertos.thread.configapplication_allocated_heap.disabled"/>
+      <property id="config.awsfreertos.thread.configgenerate_run_time_stats" value="config.awsfreertos.thread.configgenerate_run_time_stats.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_timers" value="config.awsfreertos.thread.configuse_timers.enabled"/>
+      <property id="config.awsfreertos.thread.configtimer_task_priority" value="3"/>
+      <property id="config.awsfreertos.thread.configtimer_queue_length" value="10"/>
+      <property id="config.awsfreertos.thread.configtimer_task_stack_depth" value="128"/>
+      <property id="config.awsfreertos.thread.configlibrary_max_syscall_interrupt_priority" value="board.icu.common.irq.priority1"/>
+      <property id="config.awsfreertos.thread.configassert" value="assert(x)"/>
+      <property id="config.awsfreertos.thread.configinclude_application_defined_privileged_functions" value="config.awsfreertos.thread.configinclude_application_defined_privileged_functions.disabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskpriorityset" value="config.awsfreertos.thread.include_vtaskpriorityset.enabled"/>
+      <property id="config.awsfreertos.thread.include_uxtaskpriorityget" value="config.awsfreertos.thread.include_uxtaskpriorityget.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskdelete" value="config.awsfreertos.thread.include_vtaskdelete.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtasksuspend" value="config.awsfreertos.thread.include_vtasksuspend.enabled"/>
+      <property id="config.awsfreertos.thread.include_xresumefromisr" value="config.awsfreertos.thread.include_xresumefromisr.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskdelayuntil" value="config.awsfreertos.thread.include_vtaskdelayuntil.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskdelay" value="config.awsfreertos.thread.include_vtaskdelay.enabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgetschedulerstate" value="config.awsfreertos.thread.include_xtaskgetschedulerstate.enabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgetcurrenttaskhandle" value="config.awsfreertos.thread.include_xtaskgetcurrenttaskhandle.enabled"/>
+      <property id="config.awsfreertos.thread.include_uxtaskgetstackhighwatermark" value="config.awsfreertos.thread.include_uxtaskgetstackhighwatermark.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgetidletaskhandle" value="config.awsfreertos.thread.include_xtaskgetidletaskhandle.disabled"/>
+      <property id="config.awsfreertos.thread.include_etaskgetstate" value="config.awsfreertos.thread.include_etaskgetstate.disabled"/>
+      <property id="config.awsfreertos.thread.include_xeventgroupsetbitfromisr" value="config.awsfreertos.thread.include_xeventgroupsetbitfromisr.enabled"/>
+      <property id="config.awsfreertos.thread.include_xtimerpendfunctioncall" value="config.awsfreertos.thread.include_xtimerpendfunctioncall.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskabortdelay" value="config.awsfreertos.thread.include_xtaskabortdelay.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgethandle" value="config.awsfreertos.thread.include_xtaskgethandle.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskresumefromisr" value="config.awsfreertos.thread.include_xtaskresumefromisr.enabled"/>
+      <property id="config.awsfreertos.thread.include_hw_stack_monitor" value="config.awsfreertos.thread.include_hw_stack_monitor.disabled"/>
+      <property id="config.awsfreertos.thread.print_function" value="vLoggingPrint(x)"/>
+      <property id="config.awsfreertos.thread.include_time_and_task" value="config.awsfreertos.thread.include_time_and_task.disabled"/>
+      <property id="config.awsfreertos.thread.debug_logging_name" value="Log Name"/>
+      <property id="config.awsfreertos.thread.logging_level" value="config.awsfreertos.thread.logging_level.log_none"/>
     </config>
   </raModuleConfiguration>
   <raPinConfiguration>
-    <pincfg active="true" name="RA6T2-MCK.pincfg" symbol="g_bsp_pin_cfg">
-      <configSetting altId="pa00.gpio_mode.gpio_mode_an" configurationId="pa00.gpio_mode"/>
-      <configSetting altId="pa00.adc120.an000" configurationId="pa00"/>
-      <configSetting altId="pa01.gpio_mode.gpio_mode_an" configurationId="pa01.gpio_mode"/>
-      <configSetting altId="pa01.adc120.an001" configurationId="pa01"/>
-      <configSetting altId="pa02.gpio_mode.gpio_mode_an" configurationId="pa02.gpio_mode"/>
-      <configSetting altId="pa02.adc120.an002" configurationId="pa02"/>
-      <configSetting altId="pa03.gpio_mode.gpio_mode_an" configurationId="pa03.gpio_mode"/>
-      <configSetting altId="pa03.adc120.an003" configurationId="pa03"/>
-      <configSetting altId="pa04.gpio_mode.gpio_mode_an" configurationId="pa04.gpio_mode"/>
-      <configSetting altId="pa04.adc120.an004" configurationId="pa04"/>
-      <configSetting altId="pa06.gpio_mode.gpio_mode_an" configurationId="pa06.gpio_mode"/>
-      <configSetting altId="pa06.adc121.an006" configurationId="pa06"/>
-      <configSetting altId="pa07.gpio_mode.gpio_mode_an" configurationId="pa07.gpio_mode"/>
-      <configSetting altId="pa07.adc121.an007" configurationId="pa07"/>
-      <configSetting altId="pa08.gpio_mode.gpio_mode_peripheral" configurationId="pa08.gpio_mode"/>
-      <configSetting altId="pa08.gpt8.gtioc8a" configurationId="pa08"/>
-      <configSetting altId="pa09.gpio_mode.gpio_mode_peripheral" configurationId="pa09.gpio_mode"/>
-      <configSetting altId="pa09.gpt8.gtioc8b_a" configurationId="pa09"/>
-      <configSetting altId="pa10.gpio_mode.gpio_mode_peripheral" configurationId="pa10.gpio_mode"/>
-      <configSetting altId="pa10.gpt9.gtioc9a" configurationId="pa10"/>
-      <configSetting altId="pa11.gpio_mode.gpio_mode_peripheral" configurationId="pa11.gpio_mode"/>
-      <configSetting altId="pa11.gpt9.gtioc9b" configurationId="pa11"/>
-      <configSetting altId="pa12.gpio_mode.gpio_mode_peripheral" configurationId="pa12.gpio_mode"/>
-      <configSetting altId="pa12.gpt_poegb.gtetrgb" configurationId="pa12"/>
-      <configSetting altId="pa13.gpio_mode.gpio_mode_peripheral" configurationId="pa13.gpio_mode"/>
-      <configSetting altId="pa13.jtag_fslash_swd.tms" configurationId="pa13"/>
-      <configSetting altId="pa14.gpio_mode.gpio_mode_peripheral" configurationId="pa14.gpio_mode"/>
-      <configSetting altId="pa14.jtag_fslash_swd.tck" configurationId="pa14"/>
-      <configSetting altId="pa15.gpio_mode.gpio_mode_peripheral" configurationId="pa15.gpio_mode"/>
-      <configSetting altId="pa15.jtag_fslash_swd.tdi" configurationId="pa15"/>
-      <configSetting altId="pb00.gpio_mode.gpio_mode_an" configurationId="pb00.gpio_mode"/>
-      <configSetting altId="pb00.adc121.an008" configurationId="pb00"/>
-      <configSetting altId="pb01.gpio_mode.gpio_mode_in" configurationId="pb01.gpio_mode"/>
-      <configSetting altId="pb01.gpio_irq.gpio_irq_enabled" configurationId="pb01.gpio_irq"/>
-      <configSetting altId="pb01.input" configurationId="pb01"/>
-      <configSetting altId="pb02.gpio_mode.gpio_mode_an" configurationId="pb02.gpio_mode"/>
-      <configSetting altId="pb02.adc121.an018" configurationId="pb02"/>
-      <configSetting altId="pb03.gpio_mode.gpio_mode_peripheral" configurationId="pb03.gpio_mode"/>
-      <configSetting altId="pb03.jtag_fslash_swd.tdo" configurationId="pb03"/>
-      <configSetting altId="pb04.gpio_mode.gpio_mode_peripheral" configurationId="pb04.gpio_mode"/>
-      <configSetting altId="pb04.gpt4.gtioc4a" configurationId="pb04"/>
-      <configSetting altId="pb05.gpio_mode.gpio_mode_peripheral" configurationId="pb05.gpio_mode"/>
-      <configSetting altId="pb05.gpt4.gtioc4b" configurationId="pb05"/>
-      <configSetting altId="pb06.gpio_mode.gpio_mode_peripheral" configurationId="pb06.gpio_mode"/>
-      <configSetting altId="pb06.gpt5.gtioc5a" configurationId="pb06"/>
-      <configSetting altId="pb07.gpio_mode.gpio_mode_peripheral" configurationId="pb07.gpio_mode"/>
-      <configSetting altId="pb07.gpt5.gtioc5b" configurationId="pb07"/>
-      <configSetting altId="pb08.gpio_mode.gpio_mode_peripheral" configurationId="pb08.gpio_mode"/>
-      <configSetting altId="pb08.gpt6.gtioc6a" configurationId="pb08"/>
-      <configSetting altId="pb09.gpio_mode.gpio_mode_peripheral" configurationId="pb09.gpio_mode"/>
-      <configSetting altId="pb09.gpt6.gtioc6b" configurationId="pb09"/>
-      <configSetting altId="pb10.gpio_mode.gpio_mode_an" configurationId="pb10.gpio_mode"/>
-      <configSetting altId="pb10.adc121.an028" configurationId="pb10"/>
-      <configSetting altId="pc00.gpio_mode.gpio_mode_in" configurationId="pc00.gpio_mode"/>
-      <configSetting altId="pc00.input" configurationId="pc00"/>
-      <configSetting altId="pc01.gpio_mode.gpio_mode_in" configurationId="pc01.gpio_mode"/>
-      <configSetting altId="pc01.input" configurationId="pc01"/>
-      <configSetting altId="pc02.gpio_mode.gpio_mode_an" configurationId="pc02.gpio_mode"/>
-      <configSetting altId="pc02.adc120.an014" configurationId="pc02"/>
-      <configSetting altId="pc03.gpio_mode.gpio_mode_an" configurationId="pc03.gpio_mode"/>
-      <configSetting altId="pc03.adc120.an015" configurationId="pc03"/>
-      <configSetting altId="pc04.gpio_mode.gpio_mode_in" configurationId="pc04.gpio_mode"/>
-      <configSetting altId="pc04.gpio_irq.gpio_irq_enabled" configurationId="pc04.gpio_irq"/>
-      <configSetting altId="pc04.input" configurationId="pc04"/>
-      <configSetting altId="pc05.gpio_mode.gpio_mode_in" configurationId="pc05.gpio_mode"/>
-      <configSetting altId="pc05.gpio_irq.gpio_irq_enabled" configurationId="pc05.gpio_irq"/>
-      <configSetting altId="pc05.input" configurationId="pc05"/>
-      <configSetting altId="pc06.gpio_mode.gpio_mode_out.high" configurationId="pc06.gpio_mode"/>
-      <configSetting altId="pc06.output.high" configurationId="pc06"/>
-      <configSetting altId="pc07.gpio_mode.gpio_mode_out.high" configurationId="pc07.gpio_mode"/>
-      <configSetting altId="pc07.output.high" configurationId="pc07"/>
-      <configSetting altId="pc08.gpio_mode.gpio_mode_peripheral" configurationId="pc08.gpio_mode"/>
-      <configSetting altId="pc08.gpt7.gtioc7a" configurationId="pc08"/>
-      <configSetting altId="pc09.gpio_mode.gpio_mode_peripheral" configurationId="pc09.gpio_mode"/>
-      <configSetting altId="pc09.gpt7.gtioc7b" configurationId="pc09"/>
-      <configSetting altId="pc13.gpio_mode.gpio_mode_peripheral" configurationId="pc13.gpio_mode"/>
-      <configSetting altId="pc13.gpt_poegd.gtetrgd" configurationId="pc13"/>
-      <configSetting altId="pc14.gpio_mode.gpio_mode_peripheral" configurationId="pc14.gpio_mode"/>
-      <configSetting altId="pc14.gpt3.gtioc3a" configurationId="pc14"/>
-      <configSetting altId="pc15.gpio_mode.gpio_mode_peripheral" configurationId="pc15.gpio_mode"/>
-      <configSetting altId="pc15.gpt3.gtioc3b" configurationId="pc15"/>
-      <configSetting altId="pd01.gpio_mode.gpio_mode_out.high" configurationId="pd01.gpio_mode"/>
-      <configSetting altId="pd01.output.high" configurationId="pd01"/>
-      <configSetting altId="pd02.gpio_mode.gpio_mode_out.high" configurationId="pd02.gpio_mode"/>
-      <configSetting altId="pd02.output.high" configurationId="pd02"/>
-      <configSetting altId="pd03.gpio_mode.gpio_mode_out.high" configurationId="pd03.gpio_mode"/>
-      <configSetting altId="pd03.output.high" configurationId="pd03"/>
-      <configSetting altId="pd04.gpio_mode.gpio_mode_in" configurationId="pd04.gpio_mode"/>
-      <configSetting altId="pd04.input" configurationId="pd04"/>
-      <configSetting altId="pd07.gpio_mode.gpio_mode_in" configurationId="pd07.gpio_mode"/>
-      <configSetting altId="pd07.input" configurationId="pd07"/>
-      <configSetting altId="pd08.gpio_mode.gpio_mode_peripheral" configurationId="pd08.gpio_mode"/>
-      <configSetting altId="pd08.gpt2.gtioc2a" configurationId="pd08"/>
-      <configSetting altId="pd09.gpio_mode.gpio_mode_peripheral" configurationId="pd09.gpio_mode"/>
-      <configSetting altId="pd09.gpt2.gtioc2b" configurationId="pd09"/>
-      <configSetting altId="pd12.gpio_mode.gpio_mode_in" configurationId="pd12.gpio_mode"/>
-      <configSetting altId="pd12.gpio_irq.gpio_irq_enabled" configurationId="pd12.gpio_irq"/>
-      <configSetting altId="pd12.input" configurationId="pd12"/>
-      <configSetting altId="pd13.gpio_mode.gpio_mode_in" configurationId="pd13.gpio_mode"/>
-      <configSetting altId="pd13.gpio_irq.gpio_irq_enabled" configurationId="pd13.gpio_irq"/>
-      <configSetting altId="pd13.input" configurationId="pd13"/>
-      <configSetting altId="pd14.gpio_mode.gpio_mode_in" configurationId="pd14.gpio_mode"/>
-      <configSetting altId="pd14.gpio_irq.gpio_irq_enabled" configurationId="pd14.gpio_irq"/>
-      <configSetting altId="pd14.input" configurationId="pd14"/>
-      <configSetting altId="pd15.gpio_mode.gpio_mode_out.high" configurationId="pd15.gpio_mode"/>
-      <configSetting altId="pd15.output.high" configurationId="pd15"/>
-      <configSetting altId="pe08.gpio_mode.gpio_mode_an" configurationId="pe08.gpio_mode"/>
-      <configSetting altId="pe08.adc120.an020" configurationId="pe08"/>
-      <configSetting altId="pe09.gpio_mode.gpio_mode_an" configurationId="pe09.gpio_mode"/>
-      <configSetting altId="pe09.adc120.an021" configurationId="pe09"/>
-      <configSetting altId="pe10.gpio_mode.gpio_mode_an" configurationId="pe10.gpio_mode"/>
-      <configSetting altId="pe10.adc120.an022" configurationId="pe10"/>
-      <configSetting altId="pe11.gpio_mode.gpio_mode_an" configurationId="pe11.gpio_mode"/>
-      <configSetting altId="pe11.adc120.an023" configurationId="pe11"/>
-      <configSetting altId="pe12.gpio_mode.gpio_mode_an" configurationId="pe12.gpio_mode"/>
-      <configSetting altId="pe12.adc120.an024" configurationId="pe12"/>
-      <configSetting altId="pe13.gpio_mode.gpio_mode_an" configurationId="pe13.gpio_mode"/>
-      <configSetting altId="pe13.adc120.an025" configurationId="pe13"/>
-      <configSetting altId="pe14.gpio_mode.gpio_mode_an" configurationId="pe14.gpio_mode"/>
-      <configSetting altId="pe14.adc120.an026" configurationId="pe14"/>
-      <configSetting altId="pe15.gpio_mode.gpio_mode_an" configurationId="pe15.gpio_mode"/>
-      <configSetting altId="pe15.adc121.an027" configurationId="pe15"/>
-      <configSetting altId="avcc0.system.avcc0" configurationId="avcc0"/>
-      <configSetting altId="avss0.system.avss0" configurationId="avss0"/>
-      <configSetting altId="res.system.res" configurationId="res"/>
-      <configSetting altId="vcc.system.vcc" configurationId="vcc"/>
-      <configSetting altId="vcl.system.vcl" configurationId="vcl"/>
-      <configSetting altId="vrefh0.system.vrefh0" configurationId="vrefh0"/>
-      <configSetting altId="vrefl0.system.vrefl0" configurationId="vrefl0"/>
-      <configSetting altId="vss.system.vss" configurationId="vss"/>
-      <configSetting altId="vss_fslash_porlvdmsk.system.vss_fslash_porlvdmsk" configurationId="vss_fslash_porlvdmsk"/>
-      <configSetting altId="adc120.mode.custom.free" configurationId="adc120.mode"/>
-      <configSetting altId="adc120.an000.pa00" configurationId="adc120.an000"/>
-      <configSetting altId="adc120.an001.pa01" configurationId="adc120.an001"/>
-      <configSetting altId="adc120.an002.pa02" configurationId="adc120.an002"/>
-      <configSetting altId="adc120.an003.pa03" configurationId="adc120.an003"/>
-      <configSetting altId="adc120.an004.pa04" configurationId="adc120.an004"/>
-      <configSetting altId="adc120.an014.pc02" configurationId="adc120.an014"/>
-      <configSetting altId="adc120.an015.pc03" configurationId="adc120.an015"/>
-      <configSetting altId="adc120.an020.pe08" configurationId="adc120.an020"/>
-      <configSetting altId="adc120.an021.pe09" configurationId="adc120.an021"/>
-      <configSetting altId="adc120.an022.pe10" configurationId="adc120.an022"/>
-      <configSetting altId="adc120.an023.pe11" configurationId="adc120.an023"/>
-      <configSetting altId="adc120.an024.pe12" configurationId="adc120.an024"/>
-      <configSetting altId="adc120.an025.pe13" configurationId="adc120.an025"/>
-      <configSetting altId="adc120.an026.pe14" configurationId="adc120.an026"/>
-      <configSetting altId="adc121.mode.custom.free" configurationId="adc121.mode"/>
-      <configSetting altId="adc121.an006.pa06" configurationId="adc121.an006"/>
-      <configSetting altId="adc121.an007.pa07" configurationId="adc121.an007"/>
-      <configSetting altId="adc121.an008.pb00" configurationId="adc121.an008"/>
-      <configSetting altId="adc121.an018.pb02" configurationId="adc121.an018"/>
-      <configSetting altId="adc121.an027.pe15" configurationId="adc121.an027"/>
-      <configSetting altId="adc121.an028.pb10" configurationId="adc121.an028"/>
-      <configSetting altId="jtag_fslash_swd.mode.jtag.free" configurationId="jtag_fslash_swd.mode"/>
-      <configSetting altId="jtag_fslash_swd.tck.pa14" configurationId="jtag_fslash_swd.tck"/>
-      <configSetting altId="jtag_fslash_swd.tdi.pa15" configurationId="jtag_fslash_swd.tdi"/>
-      <configSetting altId="jtag_fslash_swd.tdo.pb03" configurationId="jtag_fslash_swd.tdo"/>
-      <configSetting altId="jtag_fslash_swd.tms.pa13" configurationId="jtag_fslash_swd.tms"/>
-      <configSetting altId="system.avcc0.avcc0" configurationId="system.avcc0"/>
-      <configSetting altId="system.avss0.avss0" configurationId="system.avss0"/>
-      <configSetting altId="system.res.res" configurationId="system.res"/>
-      <configSetting altId="system.vcc.vcc" configurationId="system.vcc"/>
-      <configSetting altId="system.vcl.vcl" configurationId="system.vcl"/>
-      <configSetting altId="system.vrefh0.vrefh0" configurationId="system.vrefh0"/>
-      <configSetting altId="system.vrefl0.vrefl0" configurationId="system.vrefl0"/>
-      <configSetting altId="system.vss.vss" configurationId="system.vss"/>
-      <configSetting altId="system.vss_fslash_porlvdmsk.vss_fslash_porlvdmsk" configurationId="system.vss_fslash_porlvdmsk"/>
-      <configSetting altId="gpt2.mode.gtiocaandgtiocb.free" configurationId="gpt2.mode"/>
+    <pincfg active="true" name="RA6T2-MCK.pincfg" selected="true" symbol="g_bsp_pin_cfg">
       <configSetting altId="gpt2.gtioc2a.pd08" configurationId="gpt2.gtioc2a"/>
       <configSetting altId="gpt2.gtioc2b.pd09" configurationId="gpt2.gtioc2b"/>
-      <configSetting altId="gpt3.mode.gtiocaandgtiocb.free" configurationId="gpt3.mode"/>
+      <configSetting altId="gpt2.mode.gtiocaandgtiocb.free" configurationId="gpt2.mode"/>
       <configSetting altId="gpt3.gtioc3a.pc14" configurationId="gpt3.gtioc3a"/>
       <configSetting altId="gpt3.gtioc3b.pc15" configurationId="gpt3.gtioc3b"/>
-      <configSetting altId="gpt4.mode.gtiocaandgtiocb.free" configurationId="gpt4.mode"/>
+      <configSetting altId="gpt3.mode.gtiocaandgtiocb.free" configurationId="gpt3.mode"/>
       <configSetting altId="gpt4.gtioc4a.pb04" configurationId="gpt4.gtioc4a"/>
       <configSetting altId="gpt4.gtioc4b.pb05" configurationId="gpt4.gtioc4b"/>
-      <configSetting altId="gpt5.mode.gtiocaandgtiocb.free" configurationId="gpt5.mode"/>
+      <configSetting altId="gpt4.mode.gtiocaandgtiocb.free" configurationId="gpt4.mode"/>
       <configSetting altId="gpt5.gtioc5a.pb06" configurationId="gpt5.gtioc5a"/>
       <configSetting altId="gpt5.gtioc5b.pb07" configurationId="gpt5.gtioc5b"/>
-      <configSetting altId="gpt6.mode.gtiocaandgtiocb.free" configurationId="gpt6.mode"/>
+      <configSetting altId="gpt5.mode.gtiocaandgtiocb.free" configurationId="gpt5.mode"/>
       <configSetting altId="gpt6.gtioc6a.pb08" configurationId="gpt6.gtioc6a"/>
       <configSetting altId="gpt6.gtioc6b.pb09" configurationId="gpt6.gtioc6b"/>
-      <configSetting altId="gpt7.mode.gtiocaandgtiocb.free" configurationId="gpt7.mode"/>
+      <configSetting altId="gpt6.mode.gtiocaandgtiocb.free" configurationId="gpt6.mode"/>
       <configSetting altId="gpt7.gtioc7a.pc08" configurationId="gpt7.gtioc7a"/>
       <configSetting altId="gpt7.gtioc7b.pc09" configurationId="gpt7.gtioc7b"/>
-      <configSetting altId="gpt8.mode.gtiocaandgtiocb.free" configurationId="gpt8.mode"/>
+      <configSetting altId="gpt7.mode.gtiocaandgtiocb.free" configurationId="gpt7.mode"/>
       <configSetting altId="gpt8.gtioc8a.pa08" configurationId="gpt8.gtioc8a"/>
       <configSetting altId="gpt8.gtioc8b_a.pa09" configurationId="gpt8.gtioc8b"/>
-      <configSetting altId="gpt9.mode.gtiocaandgtiocb.free" configurationId="gpt9.mode"/>
+      <configSetting altId="gpt8.mode.gtiocaandgtiocb.free" configurationId="gpt8.mode"/>
       <configSetting altId="gpt9.gtioc9a.pa10" configurationId="gpt9.gtioc9a"/>
       <configSetting altId="gpt9.gtioc9b.pa11" configurationId="gpt9.gtioc9b"/>
-      <configSetting altId="gpt_poegb.mode.enabled.free" configurationId="gpt_poegb.mode"/>
+      <configSetting altId="gpt9.mode.gtiocaandgtiocb.free" configurationId="gpt9.mode"/>
       <configSetting altId="gpt_poegb.gtetrgb.pa12" configurationId="gpt_poegb.gtetrgb"/>
-      <configSetting altId="gpt_poegd.mode.enabled.free" configurationId="gpt_poegd.mode"/>
+      <configSetting altId="gpt_poegb.mode.enabled.free" configurationId="gpt_poegb.mode"/>
       <configSetting altId="gpt_poegd.gtetrgd.pc13" configurationId="gpt_poegd.gtetrgd"/>
-    </pincfg>
-    <pincfg active="false" name="R7FA6T2BD3CFP.pincfg" symbol="">
-      <configSetting altId="pa13.gpio_mode.gpio_mode_peripheral" configurationId="pa13.gpio_mode"/>
-      <configSetting altId="pa13.jtag_fslash_swd.tms" configurationId="pa13"/>
-      <configSetting altId="pa14.gpio_mode.gpio_mode_peripheral" configurationId="pa14.gpio_mode"/>
-      <configSetting altId="pa14.jtag_fslash_swd.tck" configurationId="pa14"/>
-      <configSetting altId="pa15.gpio_mode.gpio_mode_peripheral" configurationId="pa15.gpio_mode"/>
-      <configSetting altId="pa15.jtag_fslash_swd.tdi" configurationId="pa15"/>
-      <configSetting altId="pb03.gpio_mode.gpio_mode_peripheral" configurationId="pb03.gpio_mode"/>
-      <configSetting altId="pb03.jtag_fslash_swd.tdo" configurationId="pb03"/>
+      <configSetting altId="gpt_poegd.mode.enabled.free" configurationId="gpt_poegd.mode"/>
       <configSetting altId="jtag_fslash_swd.mode.jtag.free" configurationId="jtag_fslash_swd.mode"/>
       <configSetting altId="jtag_fslash_swd.tck.pa14" configurationId="jtag_fslash_swd.tck"/>
       <configSetting altId="jtag_fslash_swd.tdi.pa15" configurationId="jtag_fslash_swd.tdi"/>
       <configSetting altId="jtag_fslash_swd.tdo.pb03" configurationId="jtag_fslash_swd.tdo"/>
       <configSetting altId="jtag_fslash_swd.tms.pa13" configurationId="jtag_fslash_swd.tms"/>
+      <configSetting altId="pa08.gpt8.gtioc8a" configurationId="pa08"/>
+      <configSetting altId="pa08.gpio_mode.gpio_mode_peripheral" configurationId="pa08.gpio_mode"/>
+      <configSetting altId="pa09.gpt8.gtioc8b_a" configurationId="pa09"/>
+      <configSetting altId="pa09.gpio_mode.gpio_mode_peripheral" configurationId="pa09.gpio_mode"/>
+      <configSetting altId="pa10.gpt9.gtioc9a" configurationId="pa10"/>
+      <configSetting altId="pa10.gpio_mode.gpio_mode_peripheral" configurationId="pa10.gpio_mode"/>
+      <configSetting altId="pa11.gpt9.gtioc9b" configurationId="pa11"/>
+      <configSetting altId="pa11.gpio_mode.gpio_mode_peripheral" configurationId="pa11.gpio_mode"/>
+      <configSetting altId="pa12.gpt_poegb.gtetrgb" configurationId="pa12"/>
+      <configSetting altId="pa12.gpio_mode.gpio_mode_peripheral" configurationId="pa12.gpio_mode"/>
+      <configSetting altId="pa13.jtag_fslash_swd.tms" configurationId="pa13"/>
+      <configSetting altId="pa13.gpio_mode.gpio_mode_peripheral" configurationId="pa13.gpio_mode"/>
+      <configSetting altId="pa14.jtag_fslash_swd.tck" configurationId="pa14"/>
+      <configSetting altId="pa14.gpio_mode.gpio_mode_peripheral" configurationId="pa14.gpio_mode"/>
+      <configSetting altId="pa15.jtag_fslash_swd.tdi" configurationId="pa15"/>
+      <configSetting altId="pa15.gpio_mode.gpio_mode_peripheral" configurationId="pa15.gpio_mode"/>
+      <configSetting altId="pb01.input" configurationId="pb01"/>
+      <configSetting altId="pb01.gpio_irq.gpio_irq_enabled" configurationId="pb01.gpio_irq"/>
+      <configSetting altId="pb01.gpio_mode.gpio_mode_in" configurationId="pb01.gpio_mode"/>
+      <configSetting altId="pb03.jtag_fslash_swd.tdo" configurationId="pb03"/>
+      <configSetting altId="pb03.gpio_mode.gpio_mode_peripheral" configurationId="pb03.gpio_mode"/>
+      <configSetting altId="pb04.gpt4.gtioc4a" configurationId="pb04"/>
+      <configSetting altId="pb04.gpio_mode.gpio_mode_peripheral" configurationId="pb04.gpio_mode"/>
+      <configSetting altId="pb05.gpt4.gtioc4b" configurationId="pb05"/>
+      <configSetting altId="pb05.gpio_mode.gpio_mode_peripheral" configurationId="pb05.gpio_mode"/>
+      <configSetting altId="pb06.gpt5.gtioc5a" configurationId="pb06"/>
+      <configSetting altId="pb06.gpio_mode.gpio_mode_peripheral" configurationId="pb06.gpio_mode"/>
+      <configSetting altId="pb07.gpt5.gtioc5b" configurationId="pb07"/>
+      <configSetting altId="pb07.gpio_mode.gpio_mode_peripheral" configurationId="pb07.gpio_mode"/>
+      <configSetting altId="pb08.gpt6.gtioc6a" configurationId="pb08"/>
+      <configSetting altId="pb08.gpio_mode.gpio_mode_peripheral" configurationId="pb08.gpio_mode"/>
+      <configSetting altId="pb09.gpt6.gtioc6b" configurationId="pb09"/>
+      <configSetting altId="pb09.gpio_mode.gpio_mode_peripheral" configurationId="pb09.gpio_mode"/>
+      <configSetting altId="pc00.input" configurationId="pc00"/>
+      <configSetting altId="pc00.gpio_mode.gpio_mode_in" configurationId="pc00.gpio_mode"/>
+      <configSetting altId="pc01.input" configurationId="pc01"/>
+      <configSetting altId="pc01.gpio_mode.gpio_mode_in" configurationId="pc01.gpio_mode"/>
+      <configSetting altId="pc04.input" configurationId="pc04"/>
+      <configSetting altId="pc04.gpio_irq.gpio_irq_enabled" configurationId="pc04.gpio_irq"/>
+      <configSetting altId="pc04.gpio_mode.gpio_mode_in" configurationId="pc04.gpio_mode"/>
+      <configSetting altId="pc05.input" configurationId="pc05"/>
+      <configSetting altId="pc05.gpio_irq.gpio_irq_enabled" configurationId="pc05.gpio_irq"/>
+      <configSetting altId="pc05.gpio_mode.gpio_mode_in" configurationId="pc05.gpio_mode"/>
+      <configSetting altId="pc06.output.high" configurationId="pc06"/>
+      <configSetting altId="pc06.gpio_mode.gpio_mode_out.high" configurationId="pc06.gpio_mode"/>
+      <configSetting altId="pc07.output.high" configurationId="pc07"/>
+      <configSetting altId="pc07.gpio_mode.gpio_mode_out.high" configurationId="pc07.gpio_mode"/>
+      <configSetting altId="pc08.gpt7.gtioc7a" configurationId="pc08"/>
+      <configSetting altId="pc08.gpio_mode.gpio_mode_peripheral" configurationId="pc08.gpio_mode"/>
+      <configSetting altId="pc09.gpt7.gtioc7b" configurationId="pc09"/>
+      <configSetting altId="pc09.gpio_mode.gpio_mode_peripheral" configurationId="pc09.gpio_mode"/>
+      <configSetting altId="pc13.gpt_poegd.gtetrgd" configurationId="pc13"/>
+      <configSetting altId="pc13.gpio_mode.gpio_mode_peripheral" configurationId="pc13.gpio_mode"/>
+      <configSetting altId="pc14.gpt3.gtioc3a" configurationId="pc14"/>
+      <configSetting altId="pc14.gpio_mode.gpio_mode_peripheral" configurationId="pc14.gpio_mode"/>
+      <configSetting altId="pc15.gpt3.gtioc3b" configurationId="pc15"/>
+      <configSetting altId="pc15.gpio_mode.gpio_mode_peripheral" configurationId="pc15.gpio_mode"/>
+      <configSetting altId="pd01.output.high" configurationId="pd01"/>
+      <configSetting altId="pd01.gpio_mode.gpio_mode_out.high" configurationId="pd01.gpio_mode"/>
+      <configSetting altId="pd02.output.high" configurationId="pd02"/>
+      <configSetting altId="pd02.gpio_mode.gpio_mode_out.high" configurationId="pd02.gpio_mode"/>
+      <configSetting altId="pd03.output.high" configurationId="pd03"/>
+      <configSetting altId="pd03.gpio_mode.gpio_mode_out.high" configurationId="pd03.gpio_mode"/>
+      <configSetting altId="pd04.input" configurationId="pd04"/>
+      <configSetting altId="pd04.gpio_mode.gpio_mode_in" configurationId="pd04.gpio_mode"/>
+      <configSetting altId="pd07.input" configurationId="pd07"/>
+      <configSetting altId="pd07.gpio_mode.gpio_mode_in" configurationId="pd07.gpio_mode"/>
+      <configSetting altId="pd08.gpt2.gtioc2a" configurationId="pd08"/>
+      <configSetting altId="pd08.gpio_mode.gpio_mode_peripheral" configurationId="pd08.gpio_mode"/>
+      <configSetting altId="pd09.gpt2.gtioc2b" configurationId="pd09"/>
+      <configSetting altId="pd09.gpio_mode.gpio_mode_peripheral" configurationId="pd09.gpio_mode"/>
+      <configSetting altId="pd12.input" configurationId="pd12"/>
+      <configSetting altId="pd12.gpio_irq.gpio_irq_enabled" configurationId="pd12.gpio_irq"/>
+      <configSetting altId="pd12.gpio_mode.gpio_mode_in" configurationId="pd12.gpio_mode"/>
+      <configSetting altId="pd13.input" configurationId="pd13"/>
+      <configSetting altId="pd13.gpio_irq.gpio_irq_enabled" configurationId="pd13.gpio_irq"/>
+      <configSetting altId="pd13.gpio_mode.gpio_mode_in" configurationId="pd13.gpio_mode"/>
+      <configSetting altId="pd14.input" configurationId="pd14"/>
+      <configSetting altId="pd14.gpio_irq.gpio_irq_enabled" configurationId="pd14.gpio_irq"/>
+      <configSetting altId="pd14.gpio_mode.gpio_mode_in" configurationId="pd14.gpio_mode"/>
+      <configSetting altId="pd15.output.high" configurationId="pd15"/>
+      <configSetting altId="pd15.gpio_mode.gpio_mode_out.high" configurationId="pd15.gpio_mode"/>
+    </pincfg>
+    <pincfg active="false" name="R7FA6T2BD3CFP.pincfg" selected="false" symbol="">
+      <configSetting altId="jtag_fslash_swd.mode.jtag.free" configurationId="jtag_fslash_swd.mode"/>
+      <configSetting altId="jtag_fslash_swd.tck.pa14" configurationId="jtag_fslash_swd.tck"/>
+      <configSetting altId="jtag_fslash_swd.tdi.pa15" configurationId="jtag_fslash_swd.tdi"/>
+      <configSetting altId="jtag_fslash_swd.tdo.pb03" configurationId="jtag_fslash_swd.tdo"/>
+      <configSetting altId="jtag_fslash_swd.tms.pa13" configurationId="jtag_fslash_swd.tms"/>
+      <configSetting altId="pa13.jtag_fslash_swd.tms" configurationId="pa13"/>
+      <configSetting altId="pa13.gpio_mode.gpio_mode_peripheral" configurationId="pa13.gpio_mode"/>
+      <configSetting altId="pa14.jtag_fslash_swd.tck" configurationId="pa14"/>
+      <configSetting altId="pa14.gpio_mode.gpio_mode_peripheral" configurationId="pa14.gpio_mode"/>
+      <configSetting altId="pa15.jtag_fslash_swd.tdi" configurationId="pa15"/>
+      <configSetting altId="pa15.gpio_mode.gpio_mode_peripheral" configurationId="pa15.gpio_mode"/>
+      <configSetting altId="pb03.jtag_fslash_swd.tdo" configurationId="pb03"/>
+      <configSetting altId="pb03.gpio_mode.gpio_mode_peripheral" configurationId="pb03.gpio_mode"/>
     </pincfg>
   </raPinConfiguration>
 </raConfiguration>

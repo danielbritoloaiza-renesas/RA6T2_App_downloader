@@ -145,10 +145,6 @@
       <configSetting altId="pd14.gpio_mode.gpio_mode_in" configurationId="pd14.gpio_mode"/>
       <configSetting altId="pd15.output.high" configurationId="pd15"/>
       <configSetting altId="pd15.gpio_mode.gpio_mode_out.high" configurationId="pd15.gpio_mode"/>
-      <configSetting altId="pe00.gpio_mode.gpio_mode_peripheral" configurationId="pe00.gpio_mode"/>
-      <configSetting altId="pe01.gpio_mode.gpio_mode_peripheral" configurationId="pe01.gpio_mode"/>
-      <configSetting altId="sci0.rxd0.pe01" configurationId="sci0.rxd0" peripheral="SCI0"/>
-      <configSetting altId="sci0.txd0.pe00" configurationId="sci0.txd0" peripheral="SCI0"/>
       <configSetting altId="sci9.rxd9.pd06" configurationId="sci9.rxd9" isUsedByDriver="true" peripheral="SCI9"/>
       <configSetting altId="sci9.txd9.pd05" configurationId="sci9.txd9" isUsedByDriver="true" peripheral="SCI9"/>
     </pincfg>

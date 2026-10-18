@@ -231,7 +231,7 @@
       <property id="module.driver.flash.err_ipl" value="_disabled"/>
     </module>
     <module id="module.freertos.heap.4.660884652"/>
-    <module id="module.driver.uart_on_sci_b_uart.124533021">
+    <module id="module.driver.uart_on_sci_b_uart.110226939">
       <property id="module.driver.uart.name" value="g_uart9"/>
       <property id="module.driver.uart.channel" value="9"/>
       <property id="module.driver.uart.data_bits" value="module.driver.uart.data_bits.data_bits_8"/>
@@ -261,7 +261,6 @@
       <stack module="module.driver.ioport_on_ioport.0"/>
       <stack module="module.middleware.rm_freertos_port.0"/>
       <stack module="module.freertos.heap.4.660884652"/>
-      <stack module="module.driver.uart_on_sci_b_uart.124533021"/>
     </context>
     <context id="rtos.awsfreertos.thread.0">
       <property id="_symbol" value="blinky_thread"/>
@@ -281,6 +280,7 @@
       <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
       <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
       <stack module="module.driver.flash_on_flash_hp.1534033378"/>
+      <stack module="module.driver.uart_on_sci_b_uart.110226939"/>
     </context>
     <config id="config.driver.flash_hp">
       <property id="config.driver.flash_hp.param_checking_enable" value="config.flash_hp.param_checking_enable.bsp"/>
@@ -486,13 +486,6 @@
       <configSetting altId="pd14.gpio_mode.gpio_mode_in" configurationId="pd14.gpio_mode"/>
       <configSetting altId="pd15.output.high" configurationId="pd15"/>
       <configSetting altId="pd15.gpio_mode.gpio_mode_out.high" configurationId="pd15.gpio_mode"/>
-      <configSetting altId="pe00.sci0.txd0" configurationId="pe00"/>
-      <configSetting altId="pe00.gpio_mode.gpio_mode_peripheral" configurationId="pe00.gpio_mode"/>
-      <configSetting altId="pe01.sci0.rxd0" configurationId="pe01"/>
-      <configSetting altId="pe01.gpio_mode.gpio_mode_peripheral" configurationId="pe01.gpio_mode"/>
-      <configSetting altId="sci0.mode.asynchronous.free" configurationId="sci0.mode"/>
-      <configSetting altId="sci0.rxd0.pe01" configurationId="sci0.rxd0"/>
-      <configSetting altId="sci0.txd0.pe00" configurationId="sci0.txd0"/>
       <configSetting altId="sci9.mode.asynchronous.free" configurationId="sci9.mode"/>
       <configSetting altId="sci9.rxd9.pd06" configurationId="sci9.rxd9"/>
       <configSetting altId="sci9.txd9.pd05" configurationId="sci9.txd9"/>

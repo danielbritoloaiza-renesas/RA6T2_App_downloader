@@ -22,7 +22,7 @@
  * OF SUCH LOSS, DAMAGES, CLAIMS OR COSTS.
  **********************************************************************************************************************/
 
-#include "downl_thread.h"
+#include "downloader_thread.h"
 #include "common_utils.h"
 #include "comms.h"
 #include "mcuboot_image_utils.h"

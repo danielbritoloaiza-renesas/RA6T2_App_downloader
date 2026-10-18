@@ -28,7 +28,7 @@
 #include "downloader_application_code/xmodem.h"
 #include "string.h"
 #include "hal_data.h"
-#include "downl_thread.h"
+#include "downloader_thread.h"
 #include "bootloader_image_info.h"
 
 #define XM_CTRL_CODE_SOH        0x01

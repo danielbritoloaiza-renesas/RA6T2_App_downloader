@@ -23,7 +23,7 @@
  **********************************************************************************************************************/
 
 #include "comms.h"
-#include "downl_thread.h"
+#include "downloader_thread.h"
 #include "queue.h"
 
 #define COMMS_RX_QUEUE_LENGTH       (256U)

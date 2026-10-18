@@ -36,7 +36,7 @@ void blinky_thread_entry (void * pvParameters)
         R_BSP_PinAccessEnable();
 
         /* Update all board LEDs */
-        for (uint32_t i = 0; i < leds.led_count; i++)
+        for (uint32_t i = 0; i < 1; i++)
         {
             /* Get pin to toggle */
             uint32_t pin = leds.p_leds[i];

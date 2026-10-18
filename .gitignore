@@ -1,0 +1,10 @@
+# e2 studio build outputs
+/Debug/*
+!/Debug/memory_regions.ld
+
+# Generated FSP configuration report
+/ra_cfg.txt
+
+# Local e2 studio preferences
+/.settings/com.renesas.cdt.ddsc.packs.componentfiles.prefs
+/.settings/com.renesas.cdt.ddsc.settingseditor.prefs

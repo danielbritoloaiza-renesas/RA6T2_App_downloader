@@ -30,7 +30,7 @@
     <node id="board.clock.pll2.display" option="board.clock.pll2.display.value"/>
     <node id="board.clock.clock.source" option="board.clock.clock.source.pll"/>
     <node id="board.clock.clkout.source" option="board.clock.clkout.source.disabled"/>
-    <node id="board.clock.scispiclk.source" option="board.clock.scispiclk.source.disabled"/>
+    <node id="board.clock.scispiclk.source" option="board.clock.scispiclk.source.hoco"/>
     <node id="board.clock.canfdclk.source" option="board.clock.canfdclk.source.disabled"/>
     <node id="board.clock.gptclk.source" option="board.clock.gptclk.source.disabled"/>
     <node id="board.clock.iicclk.source" option="board.clock.iicclk.source.disabled"/>
@@ -128,6 +128,8 @@
       <configSetting altId="pd03.gpio_mode.gpio_mode_out.high" configurationId="pd03.gpio_mode"/>
       <configSetting altId="pd04.input" configurationId="pd04"/>
       <configSetting altId="pd04.gpio_mode.gpio_mode_in" configurationId="pd04.gpio_mode"/>
+      <configSetting altId="pd05.gpio_mode.gpio_mode_peripheral" configurationId="pd05.gpio_mode"/>
+      <configSetting altId="pd06.gpio_mode.gpio_mode_peripheral" configurationId="pd06.gpio_mode"/>
       <configSetting altId="pd07.input" configurationId="pd07"/>
       <configSetting altId="pd07.gpio_mode.gpio_mode_in" configurationId="pd07.gpio_mode"/>
       <configSetting altId="pd08.gpio_mode.gpio_mode_peripheral" configurationId="pd08.gpio_mode"/>
@@ -143,6 +145,8 @@
       <configSetting altId="pd14.gpio_mode.gpio_mode_in" configurationId="pd14.gpio_mode"/>
       <configSetting altId="pd15.output.high" configurationId="pd15"/>
       <configSetting altId="pd15.gpio_mode.gpio_mode_out.high" configurationId="pd15.gpio_mode"/>
+      <configSetting altId="sci9.rxd9.pd06" configurationId="sci9.rxd9" isUsedByDriver="true" peripheral="SCI9"/>
+      <configSetting altId="sci9.txd9.pd05" configurationId="sci9.txd9" isUsedByDriver="true" peripheral="SCI9"/>
     </pincfg>
   </raPinConfiguration>
 </raConfiguration>

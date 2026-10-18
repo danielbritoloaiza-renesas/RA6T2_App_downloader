@@ -1,4 +1,17 @@
 eclipse.preferences.version=1
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY/delimiter=;
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY/operation=replace
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_SIGNING_KEY/value=${workspace_loc\:RA6T2_Bootloader}/ra/mcu-tools/MCUboot/root-ec-p256.pem
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_VERSION/delimiter=;
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_VERSION/operation=replace
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/MCUBOOT_IMAGE_VERSION/value=1.0.0
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/append=true
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.debug.1391264508/appendContributed=true
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.release.618178215/MCUBOOT_IMAGE_VERSION/delimiter=;
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.release.618178215/MCUBOOT_IMAGE_VERSION/operation=replace
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.release.618178215/MCUBOOT_IMAGE_VERSION/value=1.0.0
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.release.618178215/append=true
+environment/project/com.renesas.cdt.managedbuild.gnuarm.config.elf.release.618178215/appendContributed=true
 org.eclipse.cdt.core.formatter.align_composite_type_declarators=false
 org.eclipse.cdt.core.formatter.alignment_for_arguments_in_method_invocation=18
 org.eclipse.cdt.core.formatter.alignment_for_assignment=16

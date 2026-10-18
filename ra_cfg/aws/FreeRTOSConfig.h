@@ -57,7 +57,7 @@ FSP_HEADER
 #define configMINIMAL_SECURE_STACK_SIZE (256U)  /* Unused in RA port. */
 #endif
 #ifndef configMAX_TASK_NAME_LEN
-#define configMAX_TASK_NAME_LEN (16)
+#define configMAX_TASK_NAME_LEN (24)
 #endif
 #ifndef configUSE_TRACE_FACILITY
 #define configUSE_TRACE_FACILITY (0)
@@ -123,10 +123,10 @@ FSP_HEADER
 #define configSUPPORT_STATIC_ALLOCATION (1)
 #endif
 #ifndef configSUPPORT_DYNAMIC_ALLOCATION
-#define configSUPPORT_DYNAMIC_ALLOCATION (0)
+#define configSUPPORT_DYNAMIC_ALLOCATION (1)
 #endif
 #ifndef configTOTAL_HEAP_SIZE
-#define configTOTAL_HEAP_SIZE (1024)
+#define configTOTAL_HEAP_SIZE (0x5000)
 #endif
 #ifndef configAPPLICATION_ALLOCATED_HEAP
 #define configAPPLICATION_ALLOCATED_HEAP (0)

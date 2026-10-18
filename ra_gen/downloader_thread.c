@@ -14,6 +14,24 @@ void downloader_thread_create(void);
 static void downloader_thread_func(void *pvParameters);
 void rtos_startup_err_callback(void *p_instance, void *p_data);
 void rtos_startup_common_init(void);
+flash_hp_instance_ctrl_t g_flash0_ctrl;
+const flash_cfg_t g_flash0_cfg =
+{ .data_flash_bgo = true, .p_callback = NULL, .p_context = NULL,
+#if defined(VECTOR_NUMBER_FCU_FRDYI)
+    .irq                 = VECTOR_NUMBER_FCU_FRDYI,
+#else
+  .irq = FSP_INVALID_VECTOR,
+#endif
+#if defined(VECTOR_NUMBER_FCU_FIFERR)
+    .err_irq             = VECTOR_NUMBER_FCU_FIFERR,
+#else
+  .err_irq = FSP_INVALID_VECTOR,
+#endif
+  .err_ipl = (BSP_IRQ_DISABLED),
+  .ipl = (BSP_IRQ_DISABLED), };
+/* Instance structure to use this module. */
+const flash_instance_t g_flash0 =
+{ .p_ctrl = &g_flash0_ctrl, .p_cfg = &g_flash0_cfg, .p_api = &g_flash_on_flash_hp };
 extern uint32_t g_fsp_common_thread_count;
 
 const rm_freertos_port_parameters_t downloader_thread_parameters =

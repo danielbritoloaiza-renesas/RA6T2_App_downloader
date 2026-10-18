@@ -57,7 +57,7 @@ FSP_HEADER
 #define configMINIMAL_SECURE_STACK_SIZE (256U)  /* Unused in RA port. */
 #endif
 #ifndef configMAX_TASK_NAME_LEN
-#define configMAX_TASK_NAME_LEN (16)
+#define configMAX_TASK_NAME_LEN (24)
 #endif
 #ifndef configUSE_TRACE_FACILITY
 #define configUSE_TRACE_FACILITY (0)

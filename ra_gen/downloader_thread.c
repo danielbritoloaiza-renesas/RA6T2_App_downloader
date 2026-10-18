@@ -32,7 +32,7 @@ void downloader_thread_create(void)
                     BaseType_t downloader_thread_create_err = xTaskCreate(
                     #endif
                                            downloader_thread_func,
-                                           (const char*) "DownThread", 0x4000 / 4, // In words, not bytes
+                                           (const char*) "Downloader Thread", 0x4000 / 4, // In words, not bytes
                                            (void*) &downloader_thread_parameters, //pvParameters
                                            3,
 #if 1
